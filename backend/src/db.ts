@@ -20,8 +20,8 @@ const ContentSchema = new Schema({
   link: { type: String, required: true },
   type: { type: String, enum: contentTypes, required: true },
   title: { type: String, required: true },
-  tags: [{ type: Schema.Types.ObjectId, ref: "tag" }],
-  userId: { type: Schema.Types.ObjectId, ref: "user", required: true },
+  tags: [{ type: Schema.Types.ObjectId, ref: "Tag" }],
+  userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
 });
 
 export const ContentModel = model("Content", ContentSchema);
@@ -30,7 +30,7 @@ export const ContentModel = model("Content", ContentSchema);
 
 const LinkSchema = new Schema({
   hash: { type: String, require: true },
-  userId: { type: Schema.Types.ObjectId, ref: "user", required: true },
+  userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
 });
 
 export const LinkModel = model("Link", LinkSchema);

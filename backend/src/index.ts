@@ -4,6 +4,9 @@ import mongoose, { connect } from "mongoose";
 import jwt from "jsonwebtoken";
 import dotenv, { parse } from "dotenv";
 import {UserModel} from "./db.js"
+import { userRouter } from "./routes/user.js";
+import { contentRouter } from "./routes/content.js";
+// import auth from "./routes/auth.js" 
 dotenv.config();
 
 const app = express();
@@ -13,30 +16,25 @@ app.use(express.json())
 
 
 
-// sign up endpoint
+// sign up  and login endpoint bothnhandled in auth.ts
+
+app.use("/api/v1/user", userRouter)  
+app.use("api/v1/content", contentRouter)
 
 
-app.post("api/v1/signup", (req, res) => {
+app.get("/api/v1/content", (req, res) => {
     
 })  
 
-app.post("api/v1/content", (req, res) => {
+app.delete("/api/v1/content", (req, res) => {
     
 })  
 
-app.get("api/v1/content", (req, res) => {
-    
-})  
-
-app.delete("api/v1/content", (req, res) => {
-    
-})  
-
-app.post("api/v1/brain/share", (req,res)=> {
+app.post("/api/v1/brain/share", (req,res)=> {
 
 })
 
-app.get("api/v1/brain/:shareLink", (req, res) => {
+app.get("/api/v1/brain/:shareLink", (req, res) => {
 
 })
 
