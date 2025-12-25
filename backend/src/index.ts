@@ -6,6 +6,7 @@ import dotenv, { parse } from "dotenv";
 import {UserModel} from "./db.js"
 import { userRouter } from "./routes/user.js";
 import { contentRouter } from "./routes/content.js";
+import tagRouter from "./routes/tag.js";
 // import auth from "./routes/auth.js" 
 dotenv.config();
 
@@ -20,15 +21,7 @@ app.use(express.json())
 
 app.use("/api/v1/user", userRouter)  
 app.use("api/v1/content", contentRouter)
-
-
-app.get("/api/v1/content", (req, res) => {
-    
-})  
-
-app.delete("/api/v1/content", (req, res) => {
-    
-})  
+app.get("/api/v1/tag", tagRouter) 
 
 app.post("/api/v1/brain/share", (req,res)=> {
 

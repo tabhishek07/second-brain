@@ -25,6 +25,7 @@ const schema = z.object({
 });
 
 const signupHandler = async (req: express.Request, res: express.Response) => {
+  console.log("inside signup")
   try {
     const parsed = schema.safeParse(req.body);
 

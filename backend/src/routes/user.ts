@@ -4,8 +4,8 @@ import { loginHandler, signupHandler } from "../controllers/userController.js";
 const userRouter = Router();
 
 
-
-userRouter.post("signup", signupHandler);
+console.log("user router hitted")
+userRouter.post("/signup", signupHandler);
 userRouter.post("/login", loginHandler);
 
 export {
