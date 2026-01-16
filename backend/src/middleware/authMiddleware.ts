@@ -14,6 +14,8 @@ export interface AuthRequest extends Request {
 }
 
 export function authmiddleware(req: AuthRequest, res: Response, next: NextFunction){
+    console.log("🔥 auth hit file loaded 🔥");
+
     const auth = req.headers.authorization;
 
     // Check if header exists and starts with 'Bearer ' (including the space)

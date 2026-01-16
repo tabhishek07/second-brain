@@ -3,34 +3,29 @@ import z from "zod";
 import mongoose, { connect } from "mongoose";
 import jwt from "jsonwebtoken";
 import dotenv, { parse } from "dotenv";
+
+
 import {UserModel} from "./db.js"
 import { userRouter } from "./routes/user.js";
+import { authmiddleware } from "./middleware/authMiddleware.js";
 import { contentRouter } from "./routes/content.js";
-import tagRouter from "./routes/tag.js";
-// import auth from "./routes/auth.js" 
+import { shareRouter } from "./routes/share.js";
+
 dotenv.config();
 
 const app = express();
 app.use(express.json())
 
-// zod schema
-
-
-
 // sign up  and login endpoint bothnhandled in auth.ts
+app.use((req, res, next) => {
+    console.log(`${req.method} request to: ${req.url}`);
+    next();
+});
 
 app.use("/api/v1/user", userRouter)  
-app.use("api/v1/content", contentRouter)
-app.get("/api/v1/tag", tagRouter) 
-
-app.post("/api/v1/brain/share", (req,res)=> {
-
-})
-
-app.get("/api/v1/brain/:shareLink", (req, res) => {
-
-})
-
+app.use("/api/v1/content",contentRouter)
+app.use("/api/v1/brain/share", shareRouter)
+app.use("/api/v1/brain", shareRouter)
 
 async function main(){
     try {
