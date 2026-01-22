@@ -3,6 +3,7 @@ import z from "zod";
 import mongoose, { connect } from "mongoose";
 import jwt from "jsonwebtoken";
 import dotenv, { parse } from "dotenv";
+import cors from "cors"
 
 
 import {UserModel} from "./db.js"
@@ -15,6 +16,7 @@ dotenv.config();
 
 const app = express();
 app.use(express.json())
+app.use(cors());
 
 // sign up  and login endpoint bothnhandled in auth.ts
 app.use((req, res, next) => {
@@ -24,8 +26,8 @@ app.use((req, res, next) => {
 
 app.use("/api/v1/user", userRouter)  
 app.use("/api/v1/content",contentRouter)
-app.use("/api/v1/brain/share", shareRouter)
 app.use("/api/v1/brain", shareRouter)
+
 
 async function main(){
     try {
