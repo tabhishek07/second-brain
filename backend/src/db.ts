@@ -14,7 +14,7 @@ const TagSchema = new Schema({
 
 export const TagModel = model("Tag", TagSchema);
 
-const contentTypes = ["image", "article", "video", "audio"];
+const contentTypes = ["youtube","twitter"];
 
 const ContentSchema = new Schema({
   link: { type: String, required: true },

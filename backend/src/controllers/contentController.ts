@@ -8,7 +8,7 @@ const router = express.Router();
 
 const contentSchema = z.object({
   link: z.string().url(),
-  type: z.enum(["image", "audio", "video", "article"]),
+  type: z.enum(["youtube", "twitter"]),
   title: z.string().min(1),
   tags:z.array(z.string()).optional()
 })
